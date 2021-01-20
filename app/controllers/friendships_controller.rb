@@ -1,6 +1,5 @@
 class FriendshipsController < ApplicationController
-
- def new
+  def new
     @friendship = Friendship.new
   end
 
@@ -29,11 +28,11 @@ class FriendshipsController < ApplicationController
   def destroy
     friend = User.find(params[:id])
     friendship = friend.friendships.find_by(friend_id: current_user.id)
-if friendship.destroy
-	flash[:notice] = 'Friendship was rejected'
-else
-	flash[:notice] = 'Something went wrong'
-end
+    flash[:notice] = if friendship.destroy
+                       'Friendship was rejected'
+                     else
+                       'Something went wrong'
+                     end
     redirect_back(fallback_location: user_path)
   end
 
@@ -42,5 +41,4 @@ end
   def params_friendship
     params.require(:friendship).permit(:friend_id)
   end
-
 end

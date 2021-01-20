@@ -19,5 +19,5 @@ RSpec.describe Post, type: :model do
     it 'content length should be less than 1000' do
       expect(subject.content.length).to be < 1000
     end
-end
+  end
 end
