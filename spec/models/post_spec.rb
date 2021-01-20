@@ -20,4 +20,18 @@ RSpec.describe Post, type: :model do
       expect(subject.content.length).to be < 1000
     end
   end
+  describe 'Post associations' do
+    it 'belongs to a user' do
+      post = Post.reflect_on_association(:user)
+      expect(post.macro).to eq(:belongs_to)
+    end
+    it 'has many comments' do
+      post = Post.reflect_on_association(:comments)
+      expect(post.macro).to eq(:has_many)
+    end
+    it 'has many likes' do
+      post = Post.reflect_on_association(:likes)
+      expect(post.macro).to eq(:has_many)
+    end
+  end
 end
