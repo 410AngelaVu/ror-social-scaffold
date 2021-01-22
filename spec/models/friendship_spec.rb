@@ -10,4 +10,14 @@ RSpec.describe Friendship, type: :model do
       expect { subject }.to change { Friendship.count }.by(1)
     end
   end
+  describe 'frienship associations' do
+    it 'belongs to a user' do
+      friendship = Friendship.reflect_on_association(:user)
+      expect(friendship.macro).to eq(:belongs_to)
+    end
+    it 'belongs to friend' do
+      friendship = Friendship.reflect_on_association(:user)
+      expect(friendship.macro).to eq(:belongs_to)
+    end
+  end
 end
