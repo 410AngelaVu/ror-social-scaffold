@@ -1,19 +1,7 @@
-
 <section class="user-section">
-  <h1><%= "Name: #{@user.name}" %></h1>
-<br>
-<hr>
-<br>
-<section class="friend-requests-section">
-  <ul class="users-list">
-    <%= render 'recived_request' %>
-  </ul>
-</section>
-<br>
-<hr>
-<br>
+  <h2><%= "Name: #{@user.name}" %></h2>
   <article class="timeline">
-  <h3>Recent posts:</h3>
+    <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
